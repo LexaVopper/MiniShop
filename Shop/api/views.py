@@ -58,6 +58,7 @@ def update_session(request):
         if not session_key:
             request.session.cycle_key()
 
+
         else:
 
             active_goods = []
