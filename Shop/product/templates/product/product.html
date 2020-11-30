@@ -1,0 +1,64 @@
+{% load static %}
+
+
+<div class="container">{% csrf_token %}
+    <h2 class='head'>featured products</h2>
+    <div class="glass-list">
+
+        {% for product_image in products_images %}
+
+            <div class="glass-item">
+                {% if product_image.product.sale > 1 %}
+                    <div class="fligth-block left">
+                    </div>
+                {% else %}
+                    {{ none }}
+                {% endif %}
+
+                {#                <div class="fligth-block rigth">#}
+                {#                </div>#}
+                <div class="img-block">
+                    <a href="{% url 'product:product_single' product_image.product.id %}">
+                        <img class="img_size" src="{{ product_image.image.url }} " alt="">
+                    </a>
+                </div>
+                <div class="buy-block">
+                    <div class="info-price">
+                        <p class="info">
+                            {{ product_image.product.name }}
+                        </p>
+                        <div class="sale-price">
+                            {% if product_image.product.sale > 1 %}
+                                <p class="sale">{{ product_image.product.first_price }}</p>
+                            {% else %}
+                                {{ none }}
+                            {% endif %}
+
+                            <p class="price">{{ product_image.product.price }} </p>
+                        </div>
+                    </div>
+                    <div class="card-img" id="{{ product_image.product.id }}" >
+
+                        {# <img src="{% static 'product/assert/glas-list/card.png' %}"  alt=""> #}
+
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <!--/.glass-list-->
+    <div class="side">
+        <div class="promo">
+
+        </div>
+        <div class="news-letters">
+            <h3 class="news-header">Newsletters <br> sing up</h3>
+            <p class="news-text">Lorem ipsum dolor sit amen, dolor imun ra adlip </p>
+            <form class="mail-form" action="#">
+{#                <input class="news-email" type="text">#}
+{#                <input class="news-submit" type="submit" value="Subscribe">#}
+            </form>
+        </div>
+    </div>
+</div>
+
